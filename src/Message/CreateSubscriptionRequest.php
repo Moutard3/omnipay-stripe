@@ -59,10 +59,9 @@ class CreateSubscriptionRequest extends AbstractRequest
     /**
      * Get the coupon
      *
-     * @param $value
-     * @return \Omnipay\Common\Message\AbstractRequest|CreateSubscriptionRequest
+     * @return string
      */
-    public function getCoupon($value)
+    public function getCoupon()
     {
         return $this->getParameter('coupon');
     }
@@ -85,6 +84,10 @@ class CreateSubscriptionRequest extends AbstractRequest
         $data = array(
             'plan' => $this->getPlan()
         );
+
+        if ($this->parameters->has('coupon')) {
+            $data['coupon'] = $this->getCoupon();
+        }
 
         if ($this->parameters->has('tax_percent')) {
             $data['tax_percent'] = (float)$this->getParameter('tax_percent');
