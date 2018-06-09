@@ -78,7 +78,7 @@ class CreatePlanRequest extends AbstractRequest
     }
 
     /**
-     * Set the plan name
+     * Set the product name
      *
      * @param $value
      * @return \Omnipay\Common\Message\AbstractRequest|CreatePlanRequest
@@ -89,13 +89,34 @@ class CreatePlanRequest extends AbstractRequest
     }
 
     /**
-     * Get the plan name
+     * Get the product name
      *
      * @return string
      */
     public function getName()
     {
         return $this->getParameter('name');
+    }
+
+    /**
+     * Set the plan nickname
+     *
+     * @param $value
+     * @return \Omnipay\Common\Message\AbstractRequest|CreatePlanRequest
+     */
+    public function setNickname($value)
+    {
+        return $this->setParameter('nickname', $value);
+    }
+
+    /**
+     * Get the plan nickname
+     *
+     * @return string
+     */
+    public function getNickname()
+    {
+        return $this->getParameter('nickname');
     }
 
     /**
@@ -149,7 +170,10 @@ class CreatePlanRequest extends AbstractRequest
             'amount' => $this->getAmountInteger(),
             'currency' => $this->getCurrency(),
             'interval' => $this->getInterval(),
-            'name' => $this->getName()
+            'nickname' => $this->getNickname(),
+            'product' => [
+                'name' => $this->getName()
+            ]
         );
 
         $intervalCount = $this->getIntervalCount();
