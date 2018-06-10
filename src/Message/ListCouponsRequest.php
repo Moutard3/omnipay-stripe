@@ -27,11 +27,32 @@ class ListCouponsRequest extends AbstractRequest
      * Set the coupon limit.
      *
      * @param $value
-     * @return \Omnipay\Common\Message\AbstractRequest|ListSubscriptionsRequest
+     * @return \Omnipay\Common\Message\AbstractRequest|ListCouponsRequest
      */
     public function setLimit($value)
     {
         return $this->setParameter('limit', $value);
+    }
+
+    /**
+     * Get the coupon starting after.
+     *
+     * @return string
+     */
+    public function getStartingAfter()
+    {
+        return $this->getParameter('starting_after');
+    }
+
+    /**
+     * Set the coupon starting after.
+     *
+     * @param $value
+     * @return \Omnipay\Common\Message\AbstractRequest|ListCouponsRequest
+     */
+    public function setStartingAfter($value)
+    {
+        return $this->setParameter('starting_after', $value);
     }
 
     public function getData()
@@ -46,6 +67,9 @@ class ListCouponsRequest extends AbstractRequest
         $endpoint = $this->endpoint.'/coupons?';
         if ($limit = $this->getLimit()) {
             $endpoint = $endpoint . 'limit=' . $limit . '&';
+        }
+        if ($starting_after = $this->getStartingAfter()) {
+            $endpoint = $endpoint . 'starting_after=' . $starting_after . '&';
         }
 
         return $endpoint;
