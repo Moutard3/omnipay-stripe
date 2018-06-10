@@ -586,6 +586,17 @@ class Gateway extends AbstractGateway
     }
 
     /**
+     * Create Coupon
+     *
+     * @param array $parameters
+     * @return \Omnipay\Stripe\Message\CreateCouponRequest
+     */
+    public function createCoupon(array $parameters = array())
+    {
+        return $this->createRequest('\Omnipay\Stripe\Message\CreateCouponRequest', $parameters);
+    }
+
+    /**
      * Fetch Coupon
      *
      * @param array $parameters
