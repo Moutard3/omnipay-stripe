@@ -13,6 +13,27 @@ namespace Omnipay\Stripe\Message;
  */
 class ListCouponsRequest extends AbstractRequest
 {
+    /**
+     * Get the coupon limit.
+     *
+     * @return string
+     */
+    public function getLimit()
+    {
+        return $this->getParameter('limit');
+    }
+
+    /**
+     * Set the coupon limit.
+     *
+     * @param $value
+     * @return \Omnipay\Common\Message\AbstractRequest|ListSubscriptionsRequest
+     */
+    public function setLimit($value)
+    {
+        return $this->setParameter('limit', $value);
+    }
+
     public function getData()
     {
         $data = array();
@@ -22,7 +43,12 @@ class ListCouponsRequest extends AbstractRequest
 
     public function getEndpoint()
     {
-        return $this->endpoint.'/coupons';
+        $endpoint = $this->endpoint.'/coupons?';
+        if ($limit = $this->getLimit()) {
+            $endpoint = $endpoint . 'limit=' . $limit . '&';
+        }
+
+        return $endpoint;
     }
 
     public function getHttpMethod()
