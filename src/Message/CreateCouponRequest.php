@@ -125,6 +125,8 @@ class CreateCouponRequest extends AbstractRequest
 
         $data = array();
 
+        $data['duration'] = $this->getDuration();
+
         if ($this->getId()) {
             $data['id'] = $this->getId();
         }
