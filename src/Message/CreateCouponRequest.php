@@ -15,11 +15,11 @@ namespace Omnipay\Stripe\Message;
 class CreateCouponRequest extends AbstractRequest
 {
     /**
- * Set the coupon ID
- *
- * @param $value
- * @return \Omnipay\Common\Message\AbstractRequest|CreateCouponRequest
- */
+     * Set the coupon ID
+     *
+     * @param $value
+     * @return \Omnipay\Common\Message\AbstractRequest|CreateCouponRequest
+     */
     public function setId($value)
     {
         return $this->setParameter('id', $value);
@@ -33,6 +33,27 @@ class CreateCouponRequest extends AbstractRequest
     public function getId()
     {
         return $this->getParameter('id');
+    }
+
+    /**
+     * Set the coupon Redeem By
+     *
+     * @param $value
+     * @return \Omnipay\Common\Message\AbstractRequest|CreateCouponRequest
+     */
+    public function setRedeemBy($value)
+    {
+        return $this->setParameter('redeem_by', $value);
+    }
+
+    /**
+     * Get the coupon Redeem By
+     *
+     * @return string
+     */
+    public function getRedeemBy()
+    {
+        return $this->getParameter('redeem_by');
     }
 
     /**
@@ -137,6 +158,9 @@ class CreateCouponRequest extends AbstractRequest
         }
         if ($this->getPercentOff()) {
             $data['percent_off'] = $this->getPercentOff();
+        }
+        if ($this->getRedeemBy()) {
+            $data['redeem_by'] = $this->getRedeemBy();
         }
 
         return $data;
