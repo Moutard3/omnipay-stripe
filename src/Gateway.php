@@ -608,6 +608,18 @@ class Gateway extends AbstractGateway
     }
 
     /**
+     * Delete a customer.
+     *
+     * @param array $parameters
+     *
+     * @return \Omnipay\Stripe\Message\DeleteCouponRequest
+     */
+    public function deleteCoupon(array $parameters = array())
+    {
+        return $this->createRequest('\Omnipay\Stripe\Message\DeleteCouponRequest', $parameters);
+    }
+
+    /**
      * List Coupons
      *
      * @param array $parameters
