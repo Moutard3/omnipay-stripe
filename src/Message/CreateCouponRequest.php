@@ -163,6 +163,10 @@ class CreateCouponRequest extends AbstractRequest
             $data['redeem_by'] = $this->getRedeemBy();
         }
 
+        if ($this->getMetadata()) {
+            $data['metadata'] = $this->getMetadata();
+        }
+
         return $data;
     }
 
